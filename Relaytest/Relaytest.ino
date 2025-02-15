@@ -12,34 +12,14 @@ void setup() {
 }
  
 void loop() {
-  digitalWrite(relaisPin1, HIGH);
-  digitalWrite(relaisPin2, LOW);
-  digitalWrite(relaisPin3, HIGH);
-  digitalWrite(relaisPin4, LOW);
-  delay(3000);
-  digitalWrite(relaisPin1, LOW);
-  digitalWrite(relaisPin2, HIGH);
-  digitalWrite(relaisPin3, LOW);
-  digitalWrite(relaisPin4, HIGH);
-  delay(500);
-  digitalWrite(relaisPin1, HIGH);
-  digitalWrite(relaisPin2, LOW);
-  digitalWrite(relaisPin3, LOW);
-  digitalWrite(relaisPin4, LOW);
-  delay(500);
   digitalWrite(relaisPin1, LOW);
   digitalWrite(relaisPin2, HIGH);
   digitalWrite(relaisPin3, LOW);
   digitalWrite(relaisPin4, LOW);
-  delay(500);
-  digitalWrite(relaisPin1, LOW);
-  digitalWrite(relaisPin2, LOW);
-  digitalWrite(relaisPin3, HIGH);
-  digitalWrite(relaisPin4, LOW);
-  delay(500);
-  digitalWrite(relaisPin1, LOW);
+  delay(1000);
+  digitalWrite(relaisPin1, HIGH);
   digitalWrite(relaisPin2, LOW);
   digitalWrite(relaisPin3, LOW);
-  digitalWrite(relaisPin4, HIGH);
-  delay(500);
+  digitalWrite(relaisPin4, LOW);
+  delay(1000);
 }
