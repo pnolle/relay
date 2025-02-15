@@ -32,7 +32,7 @@ void loop() {
 //  delay(500); // Wait before buzzing again
 
 // read piezo sensor analog
-  int sensorValue = analogRead(PIEZO_PIN); // Read piezo signal
+  int sensorValue = analogRead(PIEZO_PIN); // Read piezo signal0
 
   if (sensorValue > 50) {  // Adjust threshold based on readings
       Serial.print("Piezo activated! Value: ");
@@ -40,13 +40,6 @@ void loop() {
   }
   
   delay(5);  // Reduce delay to capture fast pulses
-
-// read piezo sensor digital
-//  int sensorValue = digitalRead(PIEZO_PIN); // Read as digital (0 or 1)
-//  if (sensorValue == HIGH) {
-//      Serial.println("Piezo activated!");
-//  }
-//  delay(10);
 
 //  digitalWrite(relaisPin1, HIGH);
 //  digitalWrite(relaisPin2, LOW);
