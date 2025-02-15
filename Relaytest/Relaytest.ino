@@ -5,6 +5,8 @@ const int relaisPin4 = 27;
 const int relaisPin5 = 26;
 
 #define PIEZO_PIN 33  // Analog pin for piezo
+
+int lampNo = 0;
  
 void setup() {
   Serial.begin(115200);
@@ -37,14 +39,22 @@ void loop() {
   if (sensorValue > 50) {  // Adjust threshold based on readings
       Serial.print("Piezo activated! Value: ");
       Serial.println(sensorValue);
+      
+      if (lampNo % 2 == 0) {
+        digitalWrite(relaisPin1, HIGH);
+        digitalWrite(relaisPin2, LOW);
+        lampNo++;
+      } else {
+        digitalWrite(relaisPin1, LOW);
+        digitalWrite(relaisPin2, HIGH);
+        lampNo++;
+      }
+      
+//      delay(450);
+//      digitalWrite(relaisPin1, LOW);
+//      digitalWrite(relaisPin2, LOW);
+//      delay(50);
   }
-  
   delay(5);  // Reduce delay to capture fast pulses
 
-//  digitalWrite(relaisPin1, HIGH);
-//  digitalWrite(relaisPin2, LOW);
-//  delay(450);
-//  digitalWrite(relaisPin1, LOW);
-//  digitalWrite(relaisPin2, LOW);
-//  delay(50);
 }
