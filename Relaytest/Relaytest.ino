@@ -1,7 +1,8 @@
-const int relaisPin1 = 1;
-const int relaisPin2 = 2;
-const int relaisPin3 = 3;
-const int relaisPin4 = 4;
+const int relaisPin1 = 13;
+const int relaisPin2 = 12;
+const int relaisPin3 = 14;
+const int relaisPin4 = 27;
+const int relaisPin5 = 26;
  
 void setup() {
   pinMode(relaisPin1, OUTPUT);
