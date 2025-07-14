@@ -1,25 +1,43 @@
 
 #include "Arduino.h"
-#include <MIDI.h>
-
-MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, MIDI);
 
 void setup() {
-  Serial.begin(115200);
-  Serial.println("Hello");
-  
-  MIDI.begin(MIDI_CHANNEL_OMNI);
+  Serial.begin(9600);
+  Serial.println("Setup");
 }
  
 void loop() {
-  if (MIDI.read()) {
-    Serial.println("MIDI processing started");
-     processMIDI();
+  // usbMIDI.read() needs to be called rapidly from loop().  When
+  // each MIDI messages arrives, it returns true. The message must
+  // be fully processed before usbMIDI.read() is called again.
+  if (usbMIDI.read()) {
+    processMIDIt();
   }
+}
+
+
+void processMIDIt(void)
+{
+  byte type = usbMIDI.getType();
+  byte channel = usbMIDI.getChannel();
+  byte data1 = usbMIDI.getData1();
+  byte data2 = usbMIDI.getData2();
+
+  Serial.print("Type: ");
+  Serial.print(type, HEX);
+  Serial.print(" Ch: ");
+  Serial.print(channel);
+  Serial.print(" Data1: ");
+  Serial.print(data1);
+  Serial.print(" Data2: ");
+  Serial.println(data2);
+}
+
 
 
 void processMIDI(void)
 {
+  Serial.println("p.");
   byte type, channel, data1, data2, cable;
 
   // fetch the MIDI message, defined by these 5 numbers (except SysEX)
@@ -39,7 +57,6 @@ void processMIDI(void)
     Serial.print(data1, DEC);
     Serial.print(", velocity=");
     Serial.println(data2, DEC);
-
     break;
 
   case usbMIDI.NoteOn: // 0x90
